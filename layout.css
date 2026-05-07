@@ -100,7 +100,7 @@ main {
   height: 500px; /* Altura da sua seção */
   
   /* 2. Configuração da Imagem */
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/GALERIA DO LOBBY/imagem-lobby.png'); /* A imagem de fundo com uma camada escura por cima para destacar o texto */
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./GALERIA DO LOBBY/imagem-lobby.png'); /* A imagem de fundo com uma camada escura por cima para destacar o texto */
   background-size: cover;       /* Preenche tudo sem bordas e sem distorcer */
   background-position: top;  /* Centraliza a foto */
   
