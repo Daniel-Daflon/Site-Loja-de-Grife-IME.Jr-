@@ -1,0 +1,640 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------- */
+/* 1. PALETA DE CORES (Tema Premium/Clear)              */
+/* ---------------------------------------------------- */
+:root {
+  /* FUNDOS */
+  --branco-fundo: #FAFAFA; /* Um branco "off-white", suave como papel, não cega a vista */
+  --branco-puro: #FFFFFF;  /* Usaremos isso apenas em cartões soltos por cima do fundo */
+  
+  /* TEXTOS */
+  --cinza-escuro: #2B2B2B; /* O novo "preto". Excelente leitura, mas elegante */
+  --cinza-mutado: #666666; /* Para parágrafos menores e descrições */
+  
+  /* DESTAQUES (Ouro/Dourado) */
+  --dourado-luxo: #D4AF37; /* Um tom de ouro clássico, não muito amarelado */
+  --dourado-hover: #B5952F; /* Dourado levemente mais escuro para quando passar o mouse */
+}
+
+/* ---------------------------------------------------- */
+/* 2. O BODY (A Fundação Clean)                         */
+/* ---------------------------------------------------- */
+body {
+  background-color: var(--branco-fundo);
+  color: var(--cinza-escuro);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Zera as margens do navegador */
+  margin: 0;
+  padding: 0;
+  
+  /* O SEGREDO DO DESIGN CLEAN: */
+  line-height: 1.7; /* Aumenta o espaço entre as linhas do texto. Dá "respiro" à leitura */
+  font-weight: 300; /* Deixa a fonte ligeiramente mais fina e sofisticada */
+  
+  /* Suaviza as fontes na tela (truque profissional) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  background-color: var(--branco-fundo);
+  padding: 30px; /* Espaço interno para o texto não colar na borda */
+  max-width: 1500px; /* A caixa não vai crescer mais do que isso */
+  margin: 40px auto; /* O "auto" nas laterais centraliza a caixa perfeitamente na tela, e o "40px" dá um espaço em cima/embaixo */
+}
+
+.logo .menu {
+  flex: 1; /* Faz o menu ocupar o espaço restante */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centraliza verticalmente */
+  background-color: var(--branco-puro);
+  padding: 15px 40px; /* 15px em cima/embaixo, 40px nas laterais */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombrinha para descolar do fundo */
+  
+  /* O Truque do Header Fixo */
+  position: sticky;
+  top: 0; /* Diz para colar quando chegar no pixel zero do topo da tela */
+  z-index: 1000; /* Garante que a barra fique por cima dos outros textos ao rolar a página */
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1.8em; /* Deixa o logo maior que o texto do menu */
+  font-weight: 600; /* Negrito para destacar */
+  color: var(--cinza-escuro);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /* Uma fonte elegante para o logo */
+  letter-spacing: 3px; /* Espaço entre as letras para um toque de sofisticação */
+}
+
+.destaque {
+  color: var(--dourado-luxo); /* O "DIH" em dourado para destacar */
+}
+
+.menu a {
+  color: var(--cinza-escuro);
+  text-decoration: none; /* Remove o sublinhado dos links */
+  margin-left: 25px; /* Espaço entre os itens do menu */
+  font-weight: 300; /* Deixa o menu mais leve, para não competir com o logo */
+  font-family: Georgia, 'Times New Roman', Times, serif; /* Uma fonte serifada para o menu, dando um toque clássico */
+  transition: color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+.menu a:hover {
+  color: var(--dourado-hover); /* Dourado mais escuro ao passar o mouse */
+}
+
+.sessao-parallax {
+  /* 1. Ocupa toda a largura da tela, ignorando margens do pai */
+  width: 100%; 
+  height: 500px; /* Altura da sua seção */
+  
+  /* 2. Configuração da Imagem */
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/GALERIA DO LOBBY/imagem-lobby.png'); /* A imagem de fundo com uma camada escura por cima para destacar o texto */
+  background-size: cover;       /* Preenche tudo sem bordas e sem distorcer */
+  background-position: top;  /* Centraliza a foto */
+  
+  /* 3. O EFEITO INFINITO (Parallax) */
+  /* No PC, a imagem fica "parada" enquanto o site sobe, criando profundidade */
+  background-attachment: fixed; 
+
+  /* Centraliza o texto internamente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-bottom: 2px solid var(--dourado-luxo); /* Linha dourada para separar a seção do restante do conteúdo */
+}
+
+
+
+/* IMPORTANTE: No celular, o 'fixed' costuma dar erro ou não funcionar. 
+   Desativamos ele para garantir que a imagem apareça corretamente. */
+@media (max-width: 768px) {
+  .sessao-parallax {
+    background-attachment: scroll; 
+  }
+}
+
+.texto-banner {
+  margin-bottom: 40px; /* Espaço entre o título e o parágrafo */
+  color: var(--branco-puro); /* Branco puro para destacar na imagem */
+  font-family: 'Montserrat', sans-serif; /* Linhas retas e modernas */
+  font-size: 2.5rem; /* Um tamanho grande e de impacto (ajuste se precisar) */
+  font-weight: 500; /* Letra mais gordinha para não sumir na imagem */
+  letter-spacing: 8px; /* Espaço entre as letras para um toque de sofisticação */
+  
+  /* O TRUQUE DE LEITURA (Substitui o text-stroke) */
+  /* Cria uma sombra escura e esfumaçada atrás do texto, descolando ele do fundo */
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
+}
+
+.conteudo-parallax p {
+  color: var(--branco-puro); /* Branco puro para destacar na imagem */
+  font-family: 'Montserrat', sans-serif; /* Linhas retas e modernas */
+  font-size: 1rem; /* Tamanho menor que o título, mas ainda legível */
+  font-weight: 400; /* Letra mais fina para o parágrafo */
+  margin-top: 15px; /* Espaço entre o título e o parágrafo */
+  max-width: 800px; /* Limita a largura do parágrafo para facilitar a leitura */
+  letter-spacing: 2px; /* Um pouco de espaço entre as letras para um toque de sofisticação */
+  /* O TRUQUE DE LEITURA (Substitui o text-stroke) */
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
+}
+
+
+.textos-introducao {
+  font-family: 'Montserrat', sans-serif; /* Fonte moderna para os textos de introdução */
+  font-size: 1.2em; /* Tamanho de fonte maior para os textos de introdução */
+  color: var(--cinza-escuro); /* Cinza escuro para uma leitura confortável */
+  margin-bottom: 50px; /* Espaço abaixo do texto de introdução */
+  margin-top: 50px;
+  padding: 100px;
+  text-align: center;
+  border-top: var(--dourado-luxo) 1px solid;
+}
+
+.textos-introducao h2 {
+  font-size: 1.8em; /* Tamanho de fonte grande para o título da introdução */
+  font-weight: 600; /* Negrito para destacar o título */
+  color: var(--cinza-escuro); /* Cinza escuro para o título, mantendo a elegância */
+  margin-bottom: 40px; /* Espaço abaixo do título para separar do parágrafo */
+}
+
+.textos-introducao p {
+  font-size: 1em; /* Tamanho de fonte padrão para os parágrafos */
+  color: var(--cinza-mutado); /* Cinza mais claro para os parágrafos, dando um toque de elegância sem competir com o texto principal */
+  max-width: 1000px; /* Limita a largura do parágrafo para facilitar a leitura */
+  margin: 0 auto; /* Centraliza o parágrafo dentro da caixa de introdução */
+  line-height: 1.6; /* Aumenta o espaço entre as linhas para melhor legibilidade */
+}
+
+.caixa-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 10px; /* Espaço entre as caixas */
+  padding: 30px;
+}
+
+.caixa-loja {
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: hidden; 
+  border: var(--dourado-luxo) 1px solid;
+}
+
+.galeria-lobby {
+  width: 100%;
+  height: 600px;
+  display: block;
+  object-fit: cover;
+}
+
+.titulo-caixa {
+  position: absolute;
+  color: var(--branco-puro); /* Cinza mais claro para os títulos das caixas, dando um toque de elegância sem competir com o texto principal */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat'; /* Fonte moderna para os títulos das caixas */
+  font-size: 1.7em; /* Tamanho de fonte maior para os títulos das caixas */
+  padding: 10px;
+  text-align: center;
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
+  letter-spacing: 3px; /* Um pouco de espaço entre as letras para um toque de sofisticação */
+}
+
+.botao-descobrir {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--branco-puro);
+  color: var(--dourado-luxo);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: var(--dourado-luxo) 1px solid;
+}
+
+.botao-descobrir:hover {
+  background-color: var(--dourado-hover);
+  color: var(--branco-puro);
+}
+
+.lojas-lobby {
+    gap: 20px;
+    text-align: center;
+    margin-top: 40px;
+    padding: 70px;
+    border-bottom: 1px solid var(--dourado-luxo);
+}
+
+.lojas-lobby h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--cinza-escuro);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 40px;
+}
+
+
+.lojas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.introducao-compras {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: #D4AF37 1px solid;
+  gap : 50px;
+}
+
+.introducao-compras h3 {
+    font-size: 2.0em;
+    font-weight: 600;
+    color: var(--cinza-escuro);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.introducao-compras p {
+    font-size: 1em;
+    color: var(--cinza-mutado);
+    text-align: center;
+    max-width: 1000px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 70px;  
+}
+
+.botao-localiza {
+  display: inline-block;
+  margin-top: 20px; 
+  color: var(--cinza-escuro);
+  text-decoration: var(--cinza-escuro);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 550;
+  font-size: 1.1em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  border: var(--dourado-luxo) 1px solid;
+}
+
+.botao-localiza:hover {
+  color: var(--dourado-hover);
+  border-color: var(--dourado-hover);
+  transform: scale(1.05); /* Pequeno efeito de zoom para destacar o botão */
+}
+
+.fale-conosco {
+  text-align: center;
+  margin-top: 30px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.fale-conosco h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--cinza-escuro);
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.botao-gmail {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--cinza-escuro);
+  text-decoration: var(--cinza-escuro);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 550;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.botao-gmail:hover {
+  color: var(--dourado-hover);
+}
+
+.galeria-calcados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px 10px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.item-calcado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 15px;
+  height: 100%;
+  border: var(--dourado-luxo) 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.imagem-calcado {
+  margin-top: 10px;
+  width: auto;
+  max-width: 250px;
+  aspect-ratio: 2/3; /* Mantém a proporção da imagem, ajustando a altura automaticamente */
+  object-fit: cover;
+  border: var(--dourado-luxo) 1px solid;
+}
+
+.info-calcado {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-calcado h4 {
+  margin-top: 3px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cinza-escuro);
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0;
+}
+
+.info-calcado p {
+    margin-top: 2px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--cinza-mutado);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1px;
+}
+
+.botao-carrinho {
+  display: inline-block;
+  margin-top: auto;
+  padding: 1px 10px;
+  background-color: var(--branco-puro);
+  color: var(--dourado-luxo);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border-radius: 1px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  border: var(--dourado-luxo) 1px solid;
+}
+
+.botao-carrinho:hover {
+  background-color: var(--dourado-luxo);
+  color: var(--branco-puro);
+}
+
+.botao-cadastro {
+  display: inline-block;
+  margin-top: 0px;
+  padding: 2px 15px;
+  background-color: var(--branco-puro);
+  color: var(--dourado-luxo);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: var(--dourado-luxo) 1px solid;
+}
+
+.botao-cadastro:hover {
+  background-color: var(--dourado-luxo);
+  color: var(--branco-puro);
+}
+
+.main-login {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px;
+    border: var(--dourado-luxo) 1px solid;
+    max-width: 60%;
+}
+
+.main-login .logo {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.criar-conta {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.criar-conta h1 {
+    margin-top: 120px;
+    font-size: 1.5rem;
+    font-weight: 550;
+    color: var(--cinza-escuro);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.criar-conta a {
+    color: var(--dourado-luxo);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.criar-conta a:hover {
+    color: var(--dourado-hover);
+}
+
+.dados-base {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dados-base .label {
+    font-size: 0.85rem;
+    color: var(--dourado-luxo);
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dados-base input {
+    padding: 10px;
+    border-color: transparent;
+    border-bottom: var(--dourado-luxo) 1px solid;
+    background-color: var(--branco-fundo);
+    color: var(--cinza-escuro);
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease;
+    max-width: 70%;
+}
+
+.dados-base input:focus {
+    outline: none; /* Remove a borda azul padrão do navegador */
+    transform: scale(1.02); /* Pequeno efeito de zoom para destacar o campo ativo */
+}
+
+.termos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.termos label {
+    font-size: 0.85rem;
+    color: var(--cinza-mutado);
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type="checkbox"].termos-checkbox-input {
+    accent-color: var(--dourado-luxo); /* Deixa a checkbox dourada */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.termos label a{
+    color: var(--cinza-mutado);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.termos label a:hover {
+    color: var(--dourado-luxo);
+    text-decoration: underline;
+}
+
+.termos-checkbox {
+    display: flex !important;  /* Força o alinhamento horizontal */ 
+    gap: 10px;
+}
+
+.botao-cadastro {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 4px 30px;
+    background-color: var(--branco-puro);
+    color: var(--dourado-luxo);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: var(--dourado-luxo) 1px solid;
+}
+
+.botao-cadastro:hover {
+    background-color: var(--dourado-luxo);
+    color: var(--branco-puro);
+}
+
+/* ---------------------------------------------------- */
+/* RODAPÉ PREMIUM (GRID + FLEX)                         */
+/* ---------------------------------------------------- */
+
+.rodape {
+    background-color: var(--cinza-escuro); /* Fundo escuro para contraste final */
+    color: var(--branco-fundo);
+    padding: 60px 20px 20px 20px;
+    margin-top: 50px;
+}
+
+.rodape-conteudo {
+    max-width: 1100px;
+    margin: 0 auto;
+    
+    /* Usando GRID para as 3 colunas principais */
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* A primeira coluna é o dobro das outras */
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Linha dourada bem sutil */
+}
+
+/* Estilo dos Títulos das Colunas */
+.rodape-coluna h4 {
+    color: var(--dourado-luxo);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.rodape-coluna p {
+    font-size: 0.85rem;
+    color: var(--texto-mutado);
+    line-height: 1.8;
+}
+
+/* Estilo da Lista de Links */
+.rodape-coluna ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rodape-coluna ul li {
+    margin-bottom: 12px;
+}
+
+.rodape-coluna ul li a {
+    text-decoration: none;
+    color: var(--texto-mutado);
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.rodape-coluna ul li a:hover {
+    color: var(--dourado-luxo);
+    padding-left: 5px; /* Pequeno efeito de movimento no hover */
+}
+
+/* Copyright Final */
+.rodape-inferior {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.75rem;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+/* ---------------------------------------------------- */
+/* RESPONSIVIDADE (Celular)                             */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    .rodape-conteudo {
+        grid-template-columns: 1fr; /* No celular, as colunas empilham-se */
+        text-align: center;
+    }
+    
+    .rodape-coluna ul li a:hover {
+        padding-left: 0;
+    }
+}
+
