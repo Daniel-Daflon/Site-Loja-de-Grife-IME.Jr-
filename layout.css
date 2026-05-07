@@ -638,3 +638,67 @@ input[type="checkbox"].termos-checkbox-input {
     }
 }
 
+/* ==================================================== */
+/* CORREÇÕES PARA CELULARES E TABLETS (RESPONSIVIDADE)  */
+/* ==================================================== */
+
+@media (max-width: 900px) {
+  
+  /* 1. CONSERTANDO O MENU (NAVBAR) */
+  .navbar {
+    flex-direction: column; /* Empilha o menu em vez de colocar lado a lado */
+    padding: 15px 10px;
+    gap: 15px;
+  }
+  
+  .logo {
+    position: relative; /* Tira a logo do centro absoluto para ela não esmagar os links */
+    transform: none;
+    left: auto;
+  }
+  
+  .menu {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os links quebrem linha se não couberem */
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .menu a {
+    margin-left: 0; /* Tira a margem gigante que empurrava os links no PC */
+    font-size: 0.9rem;
+  }
+
+  /* 2. CONSERTANDO AS CAIXAS DA PÁGINA INICIAL */
+  .caixa-total {
+    flex-direction: column; /* Empilha as categorias (Calçados em cima de Roupas, etc) */
+    padding: 10px;
+  }
+  
+  .galeria-lobby {
+    height: 400px; /* Diminui a altura da foto para não ocupar a tela inteira do celular */
+  }
+
+  /* 3. CONSERTANDO O TEXTO DE INTRODUÇÃO */
+  .textos-introducao {
+    padding: 40px 20px; /* Tira o padding gigante de 100px e deixa a leitura confortável */
+    margin-top: 20px;
+  }
+
+  /* 4. CONSERTANDO A PÁGINA DE LOGIN */
+  .main-login {
+    max-width: 95%; /* No celular, o quadro de login deve usar quase a tela toda */
+    padding: 30px 15px;
+  }
+  
+  .dados-base input {
+    max-width: 100%; /* Permite que a caixa de digitar e-mail vá até o final da tela */
+  }
+  
+  /* Ajuste geral do main para celulares */
+  main {
+    padding: 15px;
+    margin: 10px auto;
+  }
+}
+
